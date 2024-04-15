@@ -38,6 +38,12 @@ export class AuthController {
     return this.authService.findAll();
   }
 
+  @UseGuards(AuthGuard)
+  @Get('/check-token')
+  checkToken(@Request() req: Request) {
+    return this.authService.checkToken(req);
+  }
+
   /* @Get(':id')
   findOne(@Param('id') id: string) {
     return this.authService.findOne(+id);

@@ -87,6 +87,14 @@ export class AuthService {
     return rest;
   }
 
+  async checkToken(request: Request): Promise<LoginResponse> {
+    const user = request['user'];
+    return {
+      user: user,
+      token: this.getJwt({ id: user._id }),
+    };
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} auth`;
   }
